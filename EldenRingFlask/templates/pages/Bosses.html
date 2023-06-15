@@ -18,11 +18,36 @@
                     <tr>
                         <td><img src="{{i['image']}}" width="200" height="200" alt="{{i['name']}}"/></td>
                         <td>{{i['name']}}</td>
-                        <td>{{i['drops']}}</td>
-                        <td>{{i['healthPoints']}}</td>
+                        <td width="250">
+                            <table>
+                                {% for drop in i['drops']%}
+                                    {%if drop == "N/A" %}
+                                            <tr>
+                                                <td>-</td>
+                                            </tr>
+                                    {% elif 'Cave' not in drop %}
+                                        <tr>
+                                            <td>{{ drop }}</td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if i['name'] == 'Bell Bearing Hunter' %}
+                                    {% for drop in i['drops']%}
+                                        <tr>
+                                            <td>{{ drop }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                            </table>
+                        </td>
+                            {% if i['name'] == 'Bell Bearing Hunter' %}
+                                <td width="100">??? HP</td>
+                            {% else %}
+                                <td width="100">{{i['healthPoints']}} HP</td>
+                            {% endif %}
                         <td>{{i['region']}}</td>
                         <td>{{i['location']}}</td>
-                        <td>{{i['description']}}</td>
+                        <td width="150">{{i['description']}}</td>
                         <td>{{i['id']}}</td>
                     </tr>
                 {% endfor %}

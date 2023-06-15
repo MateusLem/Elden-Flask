@@ -5,10 +5,10 @@
                 <tr>
                     <th>Image</th>
                     <th>Name</th>
-                    <th>ID</th>
                     <th>Type</th>
                     <th>Description</th>
                     <th>Effect</th>
+                    <th>ID</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,10 +16,10 @@
                     <tr>
                         <td><img src="{{i['image']}}" width="200" height="200" alt="{{i['name']}}"/></td>
                         <td>{{i['name']}}</td>
-                        <td>{{i['id']}}</td>
                         <td>{{i['type']}}</td>
                         <td>{{i['description']}}</td>
                         <td>{{i['effect']}}</td>
+                        <td>{{i['id']}}</td>
                     </tr>
                 {% endfor %}
             </tbody>

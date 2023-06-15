@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/api-consumer', methods=['GET'])
 def consume_api():
-    api_url = 'https://eldenring.fanapis.com/api/npcs'
+    api_url = 'https://eldenring.fanapis.com/api/creatures'
     response = requests.get(api_url)
     if response.status_code == 200:
 
