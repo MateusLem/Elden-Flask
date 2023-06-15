@@ -18,10 +18,10 @@
             <tbody>
                 {% for i in response.json()['data'] %}
                     <tr>
-                        <td><img src="{{i['image']}}" width="150" height="150" alt="{{i['name']}}"/></td>
+                        <td><img src="{{i['image']}}" width="100" height="100" alt="{{i['name']}}"/></td>
                         <td>{{i['name']}}</td>
                         <td>{{i['category']}}</td>
-                        <td width="150">
+                        <td width="100">
                             Physical: {{i['attack'][0]['amount']}}
                             <br>
                             Magic: {{i['attack'][1]['amount']}}
@@ -34,7 +34,7 @@
                             <br>
                             Critical: {{i['attack'][5]['amount']}}
                         </td>
-                        <td width="200">
+                        <td width="150">
                             Physical: {{i['defence'][0]['amount']}}
                             <br>
                             Magic: {{i['defence'][1]['amount']}}
@@ -47,8 +47,34 @@
                             <br>
                             Guard Boost: {{i['defence'][5]['amount']}}
                         </td>
-                        <td>{{i['requirements']}}</td>
-                        <td>{{i['escalation']}}</td>
+                        <td>
+                            <table>
+                                {%for j in i['requiredAttributes']%}
+                                    <tr>
+                                        <td>{{j['name']}}: {{j['amount']}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </td>
+                        <td >
+                            <table >
+                                {%for j in i['scalesWith']%}
+                                    {%if j['scaling'] != "" %}
+                                        <tr>
+                                            <td>
+                                                {{j['name']}}: {{j['scaling']}}
+                                            </td>
+                                        </tr>    
+                                    {% else %}
+                                        <tr>
+                                            <td>
+                                                {{j['name']}}: -
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </table>
+                        </td>
                         <td>{{i['weight']}}</td>
                         <td>{{i['description']}}</td>
                         <td>{{i['id']}}</td>
