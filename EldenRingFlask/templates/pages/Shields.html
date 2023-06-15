@@ -1,0 +1,59 @@
+{% extends "Template.html" %}
+{% block content %}
+        <table class="table table-striped table-responsive table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Attack</th>
+                    <th>Defence</th>
+                    <th>Requirements</th>
+                    <th>Escalation</th>
+                    <th>Weight</th>
+                    <th>Description</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in response.json()['data'] %}
+                    <tr>
+                        <td><img src="{{i['image']}}" width="150" height="150" alt="{{i['name']}}"/></td>
+                        <td>{{i['name']}}</td>
+                        <td>{{i['category']}}</td>
+                        <td width="150">
+                            Physical: {{i['attack'][0]['amount']}}
+                            <br>
+                            Magic: {{i['attack'][1]['amount']}}
+                            <br>
+                            Fire: {{i['attack'][2]['amount']}}
+                            <br>
+                            Lightning: {{i['attack'][3]['amount']}}
+                            <br>
+                            Holy: {{i['attack'][4]['amount']}}
+                            <br>
+                            Critical: {{i['attack'][5]['amount']}}
+                        </td>
+                        <td width="200">
+                            Physical: {{i['defence'][0]['amount']}}
+                            <br>
+                            Magic: {{i['defence'][1]['amount']}}
+                            <br>
+                            Fire: {{i['defence'][2]['amount']}}
+                            <br>
+                            Lightning: {{i['defence'][3]['amount']}}
+                            <br>
+                            Holy: {{i['defence'][4]['amount']}}
+                            <br>
+                            Guard Boost: {{i['defence'][5]['amount']}}
+                        </td>
+                        <td>{{i['requirements']}}</td>
+                        <td>{{i['escalation']}}</td>
+                        <td>{{i['weight']}}</td>
+                        <td>{{i['description']}}</td>
+                        <td>{{i['id']}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

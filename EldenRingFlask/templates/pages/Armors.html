@@ -1,0 +1,57 @@
+{% extends "Template.html" %}
+{% block content %}
+        <table class="table table-striped table-responsive table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Weight</th>
+                    <th>Damage Negation</th>
+                    <th>Resistance</th>
+                    <th>Description</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in response.json()['data'] %}
+                    <tr>
+                        <td><img src="{{i['image']}}" width="200" height="200" alt="{{i['name']}}"/></td>
+                        <td>{{i['name']}}</td>
+                        <td>{{i['category']}}</td>
+                        <td>{{i['weight']}}</td>
+                        <td width="100">
+                            Physical: {{i['dmgNegation'][0]['amount']}}
+                            <br>
+                            Strike: {{i['dmgNegation'][1]['amount']}}
+                            <br>
+                            Slash: {{i['dmgNegation'][2]['amount']}}
+                            <br>
+                            Pierce: {{i['dmgNegation'][3]['amount']}}
+                            <br>
+                            Magic: {{i['dmgNegation'][4]['amount']}}
+                            <br>
+                            Fire: {{i['dmgNegation'][5]['amount']}}
+                            <br>
+                            Lightning: {{i['dmgNegation'][6]['amount']}}
+                            <br>
+                            Holy: {{i['dmgNegation'][7]['amount']}}
+                        </td>
+                        <td width="150">
+                            Immunity: {{i['resistance'][0]['amount']}}
+                            <br>
+                            Robustness: {{i['resistance'][1]['amount']}}
+                            <br>
+                            Focus: {{i['resistance'][2]['amount']}}
+                            <br>
+                            Vitality: {{i['resistance'][3]['amount']}}
+                            <br>
+                            Poise: {{i['resistance'][4]['amount']}}
+                        </td>
+                        <td>{{i['description']}}</td>
+                        <td>{{i['id']}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

@@ -1,0 +1,32 @@
+# from flask import Flask, request
+# import requests
+
+# app = Flask(__name__)
+
+# @app.route('/api-consumer', methods=['GET'])
+# def consume_api():
+    
+#     api_url_items = 'https://eldenring.fanapis.com/api/items'
+    
+#     response = requests.get(api_url_items)
+    
+#     if response.status_code == 200:
+        
+#         data = response.json()  
+#         return data
+#     else:
+        
+#         return 'Error: Unable to retrieve data from the API.'
+
+# if __name__ == '__main__':
+#     app.run()
+
+
+# Check: http://localhost:5000/api-consumer
+
+# api_url_items = 'https://eldenring.fanapis.com/api/items'
+# response = requests.get(api_url_items)
+# print(response.status_code)
+# print(response.json())
+# name = response.json()['data'][0]['name']
+# print(name)
